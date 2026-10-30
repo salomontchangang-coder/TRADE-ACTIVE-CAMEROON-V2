@@ -1,0 +1,45 @@
+# ==============================================================================
+# TRADE ACTIVE CAMEROON S.A. - NETLIFY EDGE HEADERS & SECURITY POLICIES
+# ==============================================================================
+
+# Global security headers for all paths
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# Static assets with long-term immutable caching (1 year)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/docs/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Web Manifest & Favicon
+/site.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=604800
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+# HTML pages - always fresh with instant revalidation
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
